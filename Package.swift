@@ -10,7 +10,7 @@ let package = Package(
     ],
 
     dependencies: [
-        .package(url: "https://github.com/ordo-one/package-benchmark", .upToNextMajor(from: "0.8.0")),
+        .package(url: "https://github.com/ordo-one/package-benchmark", branch: "export-histograms"),
         .package(url: "https://github.com/apple/swift-nio", .upToNextMajor(from: "2.42.0")),
     ],
 
