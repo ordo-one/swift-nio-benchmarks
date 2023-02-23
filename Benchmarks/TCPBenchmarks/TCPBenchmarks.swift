@@ -9,6 +9,7 @@
 //
 
 import BenchmarkSupport
+import Dispatch
 
 @main
 extension BenchmarkRunner {}
@@ -16,7 +17,56 @@ extension BenchmarkRunner {}
 // swiftlint disable: attributes
 @_dynamicReplacement(for: registerBenchmarks)
 func benchmarks() {
-    Benchmark("All metrics",
-              configuration: .init(metrics: BenchmarkMetric.all)) { _ in
+    Benchmark.defaultConfiguration = .init(metrics: BenchmarkMetric.all,
+                                           throughputScalingFactor: .kilo,
+                                           desiredDuration: .seconds(2))
+
+    Benchmark("TCPThroughputBenchmark.small") { benchmark in
+
+        let bench = TCPThroughputBenchmark(messages: 10_000, messageSize: 20)
+
+        do {
+            try bench.setUp()
+
+            benchmark.startMeasurement()
+            blackHole(try bench.run())
+            benchmark.stopMeasurement()
+        } catch {
+            fatalError("bench.run threw \(error)")
+        }
+        bench.tearDown()
     }
+
+    Benchmark("TCPThroughputBenchmark.medium") { benchmark in
+
+        let bench = TCPThroughputBenchmark(messages: 10_000, messageSize: 500)
+
+        do {
+            try bench.setUp()
+
+            benchmark.startMeasurement()
+            blackHole(try bench.run())
+            benchmark.stopMeasurement()
+        } catch {
+            fatalError("bench.run threw \(error)")
+        }
+        bench.tearDown()
+    }
+
+    Benchmark("TCPThroughputBenchmark.large") { benchmark in
+
+        let bench = TCPThroughputBenchmark(messages: 10_000, messageSize: 16*1024)
+
+        do {
+            try bench.setUp()
+
+            benchmark.startMeasurement()
+            blackHole(try bench.run())
+            benchmark.stopMeasurement()
+        } catch {
+            fatalError("bench.run threw \(error)")
+        }
+        bench.tearDown()
+    }
+
 }
