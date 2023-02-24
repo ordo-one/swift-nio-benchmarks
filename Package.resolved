@@ -6,7 +6,7 @@
       "location" : "https://github.com/ordo-one/package-benchmark",
       "state" : {
         "branch" : "export-histograms",
-        "revision" : "46bda9c8d4f1d0b8960b4ae88c4523d2702b2319"
+        "revision" : "f85cf9a532e40b4bfa7e63915a4628d4aaef2865"
       }
     },
     {
@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ordo-one/Progress.swift",
       "state" : {
-        "revision" : "2120b3badbb3d7870a301af43ca77918ae4ffbb5",
-        "version" : "1.0.2"
+        "revision" : "29dc5dc29d8408f42878b832c7aae38a35ff26ee",
+        "version" : "1.0.3"
       }
     },
     {
@@ -86,8 +86,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-nio",
       "state" : {
-        "revision" : "45167b8006448c79dda4b7bd604e07a034c15c49",
-        "version" : "2.48.0"
+        "branch" : "main",
+        "revision" : "81e5d344e465883fa620ded0b462859d0c39925a"
       }
     },
     {
